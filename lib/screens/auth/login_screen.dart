@@ -189,7 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       ),
                                       onPressed: () {
                                         // login(formkey);
-                                        nextScreen(context, HomePage());
+                                        nextScreen(context, HomeScreen());
                                       },
                                     ),
                                   ),

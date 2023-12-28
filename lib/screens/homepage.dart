@@ -5,6 +5,70 @@ import 'package:pariharhospital/shared/constant.dart';
 import 'package:mediaquery_sizer/mediaquery_sizer.dart';
 import 'package:pariharhospital/widgets/widgets.dart';
 import 'package:pariharhospital/screens/explorescreen.dart';
+import 'package:pariharhospital/screens/healthrecords.dart';
+import 'package:pariharhospital/screens/usermenu.dart';
+
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
+
+  final List<Widget> _screens = [
+    HomePage(),
+    ExploreScreen(),
+    HealthRecords(),
+    UserMenu(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _screens[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: Constants().primaryColor,
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.search,
+              color: Constants().primaryColor,
+            ),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.favorite,
+              color: Constants().primaryColor,
+            ),
+            label: 'Favorites',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              color: Constants().primaryColor,
+            ),
+            label: 'Profile',
+
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,6 +77,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool isToggled = false;
+  int _currentIndex = 0;
+
+  final List<Widget> _screens = [
+    HomePage(),
+    ExploreScreen(),
+    HealthRecords(),
+    UserMenu(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +94,13 @@ class _HomePageState extends State<HomePage> {
             toolbarHeight: 100,
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(0),
+                  topRight: Radius.circular(0),
                   bottomRight: Radius.circular(25),
                   bottomLeft: Radius.circular(25)),
             ),
             elevation: 0.00,
-            backgroundColor: Constants().primaryColor,
+            backgroundColor: Colors.blueAccent,
             title: Row(
               children: [
                 // User Profile Pic and Name
@@ -39,9 +113,10 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Text(
-                  'Monkey D. Luffy',
+                  'Rishabh Parihar'
+                      '',
                   style: TextStyle(
-                    color: Constants().tertiaryColor,
+                    color: Colors.white,
                   ),
                 ), // Replace with the actual user name
               ],
@@ -111,22 +186,21 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 30,),
+                SizedBox(
+                  height: 30,
+                ),
                 Center(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                      Theme.of(context).primaryColor,
+                      backgroundColor: Colors.blueAccent.withOpacity(.9),
                       elevation: 0,
                       shape: RoundedRectangleBorder(
-                        borderRadius:
-                        BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(30),
                       ),
                     ),
                     child: Text(
                       "Explore more",
-                      style: TextStyle(
-                          color: Colors.white, fontSize: 30),
+                      style: TextStyle(color: Colors.white, fontSize: 30),
                     ),
                     onPressed: () {
                       // login(formkey);

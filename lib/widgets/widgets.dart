@@ -95,3 +95,30 @@ Widget ClickableTile(String imgPath, String tileName){
       ),
     );
   }
+
+  Widget UserMenuTile(IconData icon, String tileText){
+  return Padding(
+    padding: const EdgeInsets.fromLTRB(20, 5, 12, 5),
+    child: Row(
+      children: [
+        Icon(icon,
+          size: 30,),
+
+        GestureDetector(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              tileText,
+              style: TextStyle(
+                  color: Constants().primaryColor,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 20
+              ),
+
+            ),
+          ),
+        )
+      ],
+    ),
+  );
+  }
